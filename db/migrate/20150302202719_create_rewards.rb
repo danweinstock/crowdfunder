@@ -5,7 +5,6 @@ class CreateRewards < ActiveRecord::Migration
       t.integer :qty
       t.text :description
       t.integer :project_id
-      t.integer :pledge_id
 
       t.timestamps null: false
     end

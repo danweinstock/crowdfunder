@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20150303183436) do
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer  "goal"
-    t.integer  "reward_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "owner_id"
@@ -41,7 +40,6 @@ ActiveRecord::Schema.define(version: 20150303183436) do
     t.integer  "qty"
     t.text     "description"
     t.integer  "project_id"
-    t.integer  "pledge_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
