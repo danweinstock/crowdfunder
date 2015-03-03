@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   root 'projects#index'
 
-  resources :pledges
-
-  resources :rewards
-
   resources :projects
 
   resources :users, except: [:index, :show]
