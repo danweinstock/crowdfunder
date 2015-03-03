@@ -7,3 +7,4 @@ class ApplicationController < ActionController::Base
   	redirect_to login_url, alert: "Please login to access this page"
   end
 end
+end
