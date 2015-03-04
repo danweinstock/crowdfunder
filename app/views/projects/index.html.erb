@@ -2,10 +2,10 @@
 
 <% @projects.each do |project| %>
 	<div class="project">
-		<h2> <%= project.title %> </h2>
+		<h2> <%= link_to project.title, project_path(project)	 %> </h2>
 		<p> Goal: <%= number_to_currency(project.goal) %> </p>
-		<p> Start Date: <%= project.start_date.strftime("%b %d, %Y") %> </p>
-		<p> End Date: <%= project.end_date.strftime("%b %d, %Y") %> </p>
+		<p> Days to go: <%= ((project.end_date - Time.zone.now).to_i)/1.day + 2 %> </p>
+		<p> Ending on: <%= project.end_date.strftime("%b %d, %Y") %> </p>
 		<p> Description: <%= project.description %> </p>
 	</div>
 <% end %>
