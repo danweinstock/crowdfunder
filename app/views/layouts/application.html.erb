@@ -8,9 +8,22 @@
   <%= csrf_meta_tags %>
 	  <!-- Latest compiled and minified CSS -->
 </head>
+
 <body>
 
-<%= yield %>
+	<nav class="navbar navbar-default">	
+		<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Signup", "/signup") %> </button>
+		<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Login", "/login") %> </button>
+		<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Logout", "/logout") %> </button>
+	</nav>	
+	
+	<div class="container">
+		<ul class="nav nav-tabs">
+			<li role="presentation" class="active"><%= link_to("Projects", "/projects") %></li>
+		  <li role="presentation"><%= link_to("My Profile", "/user") %></li>
+		</ul>
+		<%= yield %>		
+	</div>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
