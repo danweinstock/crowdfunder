@@ -14,11 +14,11 @@
 	<nav class="navbar navbar-default">	
 
     <% if current_user %>
-			<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Logout", logout_url ) %> </button>
+			<%= link_to("Logout", logout_url ), class: "btn btn-default navbar-btn" %>
 			<p> Logged in as <%= current_user.first_name %> <%=current_user.last_name%> </p>
 	   <% else %>
-			<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Signup", new_user_path) %> </button>
-			<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Login", :login) %> </button>
+			<%= link_to("Signup", new_user_path), class: "btn btn-default navbar-btn" %>
+			<%= link_to("Login", :login), class: "btn btn-default navbar-btn" %>
 		<% end %>
 
 	</nav>	
