@@ -5,7 +5,7 @@
 		<p> by: <%= "#{@project.owner.first_name} #{@project.owner.last_name}"%> </p>			
 			
 	<div>
-		<p> Days to go: <%= ((@project.end_date - Time.zone.now).to_i)/1.day + 2 %> </p>
+		<p> Days to go: <%= ((@project.end_date - Time.zone.now).to_i)/1.day + 1 %> </p>
 		<p> End Date: <%= @project.end_date.strftime("%B %d, %Y") %> </p>
 		<p> Backers: <%= @project.pledges.count %> </p>			
 		<p> Pledged: <%= number_to_currency(@project.pledges.pluck(:amount).sum) %> </p>
