@@ -17,7 +17,7 @@
 	<div>
 		<h3>Rewards</h3>
 			<% @project.rewards.each do |reward| %>
-			<div class="bg-info">
+			<div class="well well-sm">
 				<p> Description: <%= reward.description %> </p>
 					<p> Pledge Amount: <%= number_to_currency(reward.price) %> </p>
 				<p>	Quantity: <%= reward.qty %> </p>
