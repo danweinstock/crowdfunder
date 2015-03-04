@@ -1,0 +1,29 @@
+
+<div class="container">
+
+	<h2> <%= @project.title %> </h2>
+		<p> by: <%= "#{@project.owner.first_name} #{@project.owner.last_name}"%> </p>			
+			
+	<div>
+		<p> Days to go: <%= ((@project.end_date - Time.zone.now).to_i)/1.day + 2 %> </p>
+		<p> End Date: <%= @project.end_date.strftime("%B %d, %Y") %> </p>
+		<p> Backers: <%= @project.pledges.count %> </p>			
+		<p> Pledged: <%= number_to_currency(@project.pledges.pluck(:amount).sum) %> </p>
+		<p> Goal: <%= number_to_currency(@project.goal) %> </p>
+		<p> Description: <%= @project.description %> </p>			
+		<p> Project started: <%= @project.start_date.strftime("%B %d, %Y") %> </p>
+	</div>
+
+	<div>
+		<h3>Rewards</h3>
+			<% @project.rewards.each do |reward| %>
+			<div class="well well-sm">
+				<p> Description: <%= reward.description %> </p>
+					<p> Pledge Amount: <%= number_to_currency(reward.price) %> </p>
+				<p>	Quantity: <%= reward.qty %> </p>
+			</div>
+			</br>
+		<% end %>
+	</div>
+
+</div>
