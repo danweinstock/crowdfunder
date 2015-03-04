@@ -29,6 +29,7 @@
 
 	    <% if current_user %>
 		  	<li role="presentation"><%= link_to("My Profile", user_path(current_user.id)) %></li>
+		  	<li role="presentation"><%= link_to("New Project", new_project_path()) %></li>
 			<% end %>
 
 		</ul>
