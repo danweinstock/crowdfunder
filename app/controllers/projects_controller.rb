@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+	
 	def index
 		@projects = Project.all
 	end
@@ -8,7 +9,8 @@ class ProjectsController < ApplicationController
 	end
 
 	def create
-		@project = current_user.projects.new(project_params)
+		@project = Project.new(project_params)
+		@project.owner_id = current_user.id
 		# @project = Project.new(project_params)
 
 		if @project.save
