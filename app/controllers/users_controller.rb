@@ -19,8 +19,7 @@ class UsersController < ApplicationController
 	end
 
 	def show
-		@pledge = User.pledge(params[:id])
-
+		@user = User.find(params[:id])
 	end
 
 	private 
