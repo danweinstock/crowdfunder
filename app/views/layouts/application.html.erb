@@ -12,15 +12,25 @@
 <body>
 
 	<nav class="navbar navbar-default">	
-		<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Signup", "/signup") %> </button>
-		<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Login", "/login") %> </button>
-		<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Logout", :logout, method: :post ) %> </button>
+
+    <% if current_user %>
+			<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Logout", logout_url ) %> </button>
+			<p> Logged in as <%= current_user.first_name %> <%=current_user.last_name%> </p>
+	   <% else %>
+			<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Signup", new_user_path) %> </button>
+			<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Login", :login) %> </button>
+		<% end %>
+
 	</nav>	
 	
 	<div class="container">
 		<ul class="nav nav-tabs">
 			<li role="presentation" class="active"><%= link_to("Projects", "/projects") %></li>
-		  <li role="presentation"><%= link_to("My Profile", user_path(current_user.id)) %></li>
+
+	    <% if current_user %>
+		  	<li role="presentation"><%= link_to("My Profile", user_path(current_user.id)) %></li>
+			<% end %>
+
 		</ul>
 		<%= yield %>		
 	</div>
