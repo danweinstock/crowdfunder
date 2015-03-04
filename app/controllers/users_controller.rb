@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+	
 
 	def new
 		@user = User.new
@@ -8,6 +9,11 @@ class UsersController < ApplicationController
 	end
 
 	def edit
+	end
+
+	def show
+		@pledge = User.pledge(params[:id])
+
 	end
 
 	private 
