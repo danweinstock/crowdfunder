@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :projects
 
-  resources :users, except: [:index, :show]
+  resources :users, except: [:index]
 
   resources :password_resets, only: [:create, :edit, :update]
 
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get 'login' => 'user_sessions#new', :as => :login
   get 'logout' => 'user_session#destroy', :as => :logout
+  get "signup" => "users#new", :as => :signup
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
