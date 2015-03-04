@@ -1,0 +1,17 @@
+<h2> <%= @project.title %> </h2>
+		
+<div class="project">
+	<p> Goal: <%= number_to_currency(@project.goal) %> </p>
+	<p> Start Date: <%= @project.start_date.strftime("%b %d, %Y") %> </p>
+	<p> End Date: <%= @project.end_date.strftime("%b %d, %Y") %> </p>
+	<p> Description: <%= @project.description %> </p>			
+</div>
+
+<div class="rewards">
+	<% @project.rewards.each do |reward| %>
+		<p> Reward: <%= reward.description %> </p>
+		<p> Price: <%= number_to_currency(reward.price) %> </p>
+		<p>	Quantity: <%= reward.qty %> </p>
+	<% end %>
+</div>
+
