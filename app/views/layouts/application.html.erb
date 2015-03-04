@@ -14,13 +14,13 @@
 	<nav class="navbar navbar-default">	
 		<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Signup", "/signup") %> </button>
 		<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Login", "/login") %> </button>
-		<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Logout", "/logout") %> </button>
+		<button type="button" class="btn btn-default navbar-btn"> <%= link_to("Logout", :logout, method: :post ) %> </button>
 	</nav>	
 	
 	<div class="container">
 		<ul class="nav nav-tabs">
 			<li role="presentation" class="active"><%= link_to("Projects", "/projects") %></li>
-		  <li role="presentation"><%= link_to("My Profile", "/user") %></li>
+		  <li role="presentation"><%= link_to("My Profile", user_path(current_user.id)) %></li>
 		</ul>
 		<%= yield %>		
 	</div>
