@@ -3,15 +3,11 @@
 	<h1><%= @project.title %> <small>by: <%= "#{@project.owner.first_name} #{@project.owner.last_name}"%> </small></h1>
 </div>
 <div>
-	<% @pledged = @project.pledges.pluck(:amount).sum.to_f %>
-	<% @goal = @project.goal.to_f %>
-	<% @progress = @pledged/@goal*100%>
-	
 	<p> Days to go: <%= ((@project.end_date - Time.zone.now).to_i)/1.day + 1 %> </p>
 	<p> End Date: <%= @project.end_date.strftime("%B %d, %Y") %> </p>
 	<p> Backers: <%= @project.pledges.count %> </p>			
-	<p> Pledged: <%= number_to_currency(@project.pledges.pluck(:amount).sum) %> </p>
-	<p> Goal: <%= number_to_currency(@project.goal) %> </p>
+	<p> Pledged: <%= number_to_currency(@pledged) %> </p>
+	<p> Goal: <%= number_to_currency(@goal) %> </p>
 	<div class="progress">
 		<div class="progress-bar" role="progressbar" aria-valuenow="<%= @progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @progress %>%">
 			<span class="sr-only"><%= @progress %>% Complete</span>

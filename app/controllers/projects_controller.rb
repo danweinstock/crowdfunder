@@ -22,6 +22,9 @@ class ProjectsController < ApplicationController
 	
 	def show
     @project = Project.find(params[:id])
+    @pledged = @project.pledges.pluck(:amount).sum
+    @goal = @project.goal
+    @progress = @pledged.to_f / @goal.to_f * 100
 	end
 
 	def update
