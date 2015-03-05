@@ -28,11 +28,13 @@
 		<%= f.datetime_select :end_date, class: "form-control" %>
 	</div>
 	
-	<h3>Rewards</h3>
+	<h3><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Rewards</h3>
 	<div class="form-group">
+		
 		<%= f.fields_for :rewards do |reward| %>
 			<%= render 'reward_fields', f: reward %>
 		<% end %>
+		
 		<div class="link">
 			<%= link_to_add_association 'Add Reward', f, :rewards, class: "btn btn-primary" %>
 		</div>
