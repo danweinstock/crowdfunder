@@ -3,7 +3,7 @@
 		<% @user.pledges.each do |p| %>
 	<div class="well well-sm">
 			<dt class="h3"> Project title:
-				<%= link_to p.reward.project.title, project_path%>
+				<%= link_to p.reward.project.title, project_path(p.id)%>
 			</dt>
 				<dd>Pledge amount:	<%= p.amount %></dd>
 				<dd>Reward Description: <%= p.reward.description%></dd>
