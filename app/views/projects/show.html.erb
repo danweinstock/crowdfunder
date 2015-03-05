@@ -10,7 +10,7 @@
 	<p> Goal: <%= number_to_currency(@goal) %> </p>
 	<div class="progress">
 		<div class="progress-bar" role="progressbar" aria-valuenow="<%= @progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @progress %>%">
-			<span class="sr-only"><%= @progress %>% Complete</span>
+			<%= number_to_percentage @progress, precision: 0 %>
 		</div>
 	</div>
 	<p> Description: <%= @project.description %> </p>			
@@ -24,14 +24,17 @@
 <div>
 	<h3>Rewards</h3>
 		<% @project.rewards.each do |reward| %>
-		<div class="well well-sm">
-			<h5> Pledge <%= number_to_currency(reward.price) %> or more </h5>
-			<p> Description: <%= reward.description %> </p>
-			<p>	Quantity: <%= reward.qty %> </p>
-			<p> Backers: <%= reward.pledges.count %> </p>
-			<p> Remaining: <%= reward.qty - reward.pledges.count %> </p>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h5 class="panel-title"> Pledge <%= number_to_currency(reward.price) %> or more </h5>
+			</div>
+			<div class="panel-body">
+				<p> Description: <%= reward.description %> </p>
+				<p>	Quantity: <%= reward.qty %> </p>
+				<p> Backers: <%= reward.pledges.count %> </p>
+				<p> Remaining: <%= reward.qty - reward.pledges.count %> </p>
+			</div>
 		</div>
-		</br>
 	<% end %>
 </div>
 
