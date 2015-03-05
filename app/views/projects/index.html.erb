@@ -1,5 +1,7 @@
 
 <br>
+
+<h4><%= page_entries_info @projects %></h4>
 <% @projects.each do |project| %>
 	<div class="well">
 		<h2> <%= link_to project.title, project_path(project)	 %> </h2>
@@ -10,3 +12,4 @@
 	</div>
 <% end %>
 
+<%= paginate @projects, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-small pagination-centered" %>

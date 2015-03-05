@@ -28,6 +28,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'cocoon'
 gem 'sorcery'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 # Use CanCan for user Auth
 gem 'cancancan', '~> 1.10'
