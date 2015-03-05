@@ -1,5 +1,7 @@
 
 <br>
+
+<h4><%= page_entries_info @projects %></h4>
 <% @projects.each do |project| %>
 	<div class="well">
 		<h2> <%= link_to project.title, project_path(project)	 %> </h2>
@@ -9,3 +11,5 @@
 		<p> Description: <%= project.description %> </p>
 	</div>
 <% end %>
+
+<%= paginate @projects %>
