@@ -4,18 +4,36 @@ class PledgesController < ApplicationController
 	end
 
 	def create
-		@pledge = Pledge.new
-		@pledge.backer_id = current_user.id
-		@pledge.amount = @reward.price
-		@pledge.reward_id = @reward.id
+		@pledge = Pledge.new(pledge_params)
 
-		if @pledge.save 
-			redirect_to project_path(@project)
-		else
-			render 'new'
-		end
+		respond_to do |format|
+			if @pledge.save 
+				format.html { redirect_to project_path(@pledge.reward.project) }
+				format.js {}
+			else
+				format.html { render 'new' }
+				format.js {}
+			end
 	end
 
+	# respond_to do |format|
+	#       if @review.save
+	#         format.html { redirect_to product_path(@product.id), notice: 'Review added.' }
+	#         format.js {} # This will look for app/views/reviews/create.js.erb
+	#       else
+	#         format.html { render 'products/show', alert: 'There was an error.'  }
+	#         format.js {} # This will look for app/views/reviews/create.js.erb
+	#       end
+	#     end    
+
+	private
+	def pledge_params
+		params.require(:pledge).permit(
+			:reward_id,
+			:backer_id,
+			:amount
+		)
+	end
 
 
 end

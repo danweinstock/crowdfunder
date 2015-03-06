@@ -7,12 +7,10 @@ Rails.application.routes.draw do
     end
   end
 
-
-
-  resources :users, except: [:index]
-
-  resources :password_resets, only: [:create, :edit, :update]
-
+  resources :users, except: [:index] do 
+    resources :password_resets, only: [:create, :edit, :update]
+  end
+  
   resources :user_sessions, only: [:new, :create, :destroy]
 
   get 'login' => 'user_sessions#new', as: :login
