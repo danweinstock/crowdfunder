@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
   has_many :projects, foreign_key: "owner_id"
   has_many :pledges, foreign_key: "backer_id"
   has_many :rewards, through: :pledges 
+
+  mount_uploader :avatar, AvatarUploader
 end

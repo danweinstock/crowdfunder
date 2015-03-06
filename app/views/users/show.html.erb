@@ -7,6 +7,10 @@
   <li role="presentation" class="owned-projects"><a>Owned Projects</a></li>
 </ul>
 
+<div>
+	<%= image_tag @user.avatar_url(:medium) %>
+</div>
+
 <div id="projects-container">
 	<%= render partial: "pledge" %> 
 </div>
