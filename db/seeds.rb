@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require 'carrierwave/orm/activerecord'
+
 puts "\nCreating users"
 10.times do 
 	User.create!(
