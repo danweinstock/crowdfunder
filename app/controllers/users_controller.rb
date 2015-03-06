@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 	end
 
 	def owned
+		@owned_projects = current_user.projects.sort_by{|project| project.end_date }
 		respond_to do |format|
       format.html do
         if request.xhr?
@@ -33,6 +34,13 @@ class UsersController < ApplicationController
 	end
 
 	def backed
+		respond_to do |format|
+      format.html do
+        if request.xhr?
+          render 'backed', layout: false
+        end
+      end
+    end
 	end
 
 	private 
