@@ -1,12 +1,12 @@
 <div class= "container">
 	<dl>
-		<% @user.pledges.each do |p| %>
+		<% @user.pledges.each do |pledge| %>
 	<div class="well well-sm">
 			<dt class="h3"> Project title:
-				<%= link_to p.reward.project.title, project_path(p.id)%>
+				<%= link_to pledge.reward.project.title, project_path(pledge.reward.project)%>
 			</dt>
-				<dd>Pledge amount:	<%= p.amount %></dd>
-				<dd>Reward Description: <%= p.reward.description%></dd>
+				<dd>Pledge amount:	<%= pledge.amount %></dd>
+				<dd>Reward Description: <%= pledge.reward.description%></dd>
 
 	</div>
 		<% end %>
