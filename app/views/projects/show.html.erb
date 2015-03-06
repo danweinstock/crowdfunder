@@ -30,7 +30,9 @@
 					<p> Backers: <%= reward.pledges.count %> </p>
 					<p> Remaining: <%= reward.qty - reward.pledges.count %> </p>
 				</div>
+				
 			<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#reward-modal-<%= reward.id %>">Back this project!</button>
+			
 			</div>
 			<div id="reward-modal-<%= reward.id %>"class="reward-modal modal fade" tabindex="-1" role="dialog" aria-abelliedby="rewardModalLabel" aria-hidden="true">
 			 	<%= render partial: 'pledges/pledges_fields', locals: {project: @project, reward: reward, pledge: reward.pledges.new }%>
