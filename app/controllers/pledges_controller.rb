@@ -14,6 +14,7 @@ class PledgesController < ApplicationController
 				format.html { render 'new' }
 				format.js {}
 			end
+		end
 	end
 
 	# respond_to do |format|
