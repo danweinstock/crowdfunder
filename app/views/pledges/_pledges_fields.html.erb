@@ -12,6 +12,7 @@
 	      	<%= f.hidden_field :backer_id, value: current_user.id %>
           <%= f.hidden_field :amount, value: reward.price %>
           <%= f.hidden_field :reward_id, value: reward.id %>
+          <%= f.hidden_field :project_id, value: project.id %>
 	      	<%= f.submit "Back this project", class: "btn btn-primary btn-block btn-lrg back-project" %>
 	      <% end %>
       </div>

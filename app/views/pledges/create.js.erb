@@ -1,1 +1,8 @@
-$('#reward-modal-<%= @pledge.reward.project.id %>').modal(toggle);
+$('.project-info').html("<%= j(render partial: 'projects/project_info') %>");
+console.log('project-info done')
+
+$('.reward-info').html("<%= j(render @project.rewards) %>");
+console.log('reward-info done')
+
+$('#reward-modal-<%= @pledge.reward.id %>').modal('toggle');
+console.log('all done')

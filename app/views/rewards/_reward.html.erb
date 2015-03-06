@@ -1,0 +1,31 @@
+<div class="col-md-6">
+	<div class="panel panel-default">
+		
+		<div class="panel-heading">
+			<h5 class="panel-title"> Pledge <%= number_to_currency(reward.price) %> or more </h5>
+		</div>
+		
+		<div class="panel-body">
+			<p> Description: <%= reward.description %> </p>
+			<p>	Quantity: <%= reward.qty %> </p>
+			<p id="reward-backer-count"> Backers: <span><%= reward.pledges.count %></span> </p>
+			<p> Remaining: <%= reward.qty - reward.pledges.count %> </p>
+		</div>
+		
+		<% if current_user %>
+			<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#show-reward-modal-<%= reward.id %>">Back this project!</button>
+		<% else %>
+			<%= link_to "Log In to Back", login_path, class: "btn btn-primary btn-block" %>
+		<% end %>
+
+	</div>
+
+	<% if current_user %>
+		
+		<div id="show-reward-modal-<%= reward.id %>" class="reward-modal modal fade" tabindex="-1" role="dialog" aria-abelliedby="rewardModalLabel" aria-hidden="true">
+		 	<%= render partial: 'pledges/pledges_fields', locals: { project: @project, reward: reward, pledge: reward.pledges.new }%>
+	 	</div>
+	
+	<% end %>
+
+</div>

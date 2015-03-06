@@ -1,13 +1,21 @@
 class PledgesController < ApplicationController
 	def new
-
 	end
 
 	def create
 		@pledge = Pledge.new(pledge_params)
 
 		respond_to do |format|
-			if @pledge.save 
+			if @pledge.save
+				@project = Project.find(params[:project_id])
+
+				# @backer_count = @project.pledges.count
+				# @total_pledged = number_to_currency @project.pledges.pluck(:amount).sum
+				# @goal = @project.goal
+				# @progress = @pledge.to_f / @goal.to_f * 100
+				# @reward_backer_count = @pledge.reward.pledges.count
+
+
 				format.html { redirect_to project_path(@pledge.reward.project) }
 				format.js {}
 			else
