@@ -23,7 +23,7 @@ puts "\nCreating projects"
 100.times do 
 	p = Project.create!(
 		title: Faker::App.name,
-	  description: Faker::Lorem.sentence, 
+	  description: Faker::Lorem.paragraph(10), 
 	  start_date: Faker::Date.backward(25),
 	  end_date: Faker::Date.forward(25),
 	  goal: Faker::Number.number(5),
@@ -37,7 +37,7 @@ puts "\nCreating projects"
 			project_id: p.id,
 			price: Faker::Number.number(4),
   		qty: Faker::Number.number(2),
-  		description: Faker::Lorem.sentence
+  		description: Faker::Lorem.sentence(3)
 		)
 	end
 	print "|"
