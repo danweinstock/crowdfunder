@@ -1,0 +1,6 @@
+<<<<<<< HEAD
+alert("You backed this project!");
+console.log('you clicked on this');
+=======
+alert("You backed this project!");
+>>>>>>> f6d22603208516089299de9c63ae7f8eeab52523
