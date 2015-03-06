@@ -1,25 +1,30 @@
-
-<div class="page-header">
+<div class="jumbotron">
 	<h1><%= @project.title %> <small>by: <%= "#{@project.owner.first_name} #{@project.owner.last_name}"%> </small></h1>
 </div>
 
-<div class="jumbotron">
-
-	<p> Days to go: <%= ((@project.end_date - Time.zone.now).to_i)/1.day + 1 %> </p>
-	<p> End Date: <%= @project.end_date.strftime("%B %d, %Y") %> </p>
-	<p> Backers: <%= @project.pledges.count %> </p>			
-	<p> Pledged: <%= number_to_currency(@pledged) %> </p>
-	<p> Goal: <%= number_to_currency(@goal) %> </p>
+<div class="col-md-6">
 	
-	<div class="progress">
-		<div class="progress-bar" role="progressbar" aria-valuenow="<%= @progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @progress %>%">
-			<%= number_to_percentage @progress, precision: 0 %>
-		</div>
-	</div>
-	
-	<p> Description: <%= @project.description %> </p>			
-	<p> Project started: <%= @project.start_date.strftime("%B %d, %Y") %></p>
+	<ul class="list-group">
+		<li id="backer-count" class="list-group-item"> Backers: <%= @project.pledges.count %> </li>			
+		<li id="total-pledged" class="list-group-item"> Pledged: <%= number_to_currency(@pledged) %> </li>
+		<li id="goal" class="list-group-item"> Goal: <%= number_to_currency(@goal) %> </li>
+		<li class="list-group-item">
+			<div class="progress">
+				<div class="progress-bar" role="progressbar" aria-valuenow="<%= @progress %>" aria-valuemin="0" aria-valuemax="100" style=" width: <%= @progress %>%">
+					<%= number_to_percentage @progress, precision: 0 %>
+				</div>
+			</div>
+		</li>
+	</ul>
 </div>
+
+<div class="col-md-6">
+	<p id="time-left"><%= ((@project.end_date - Time.zone.now).to_i)/1.day + 1 %> days to go!</p>
+	<p>End Date: <%= @project.end_date.strftime("%B %d, %Y") %> </p>
+	<p>Project started: <%= @project.start_date.strftime("%B %d, %Y") %></p>
+	<p>Description: <%= @project.description %> </p>			
+</div>
+	
 
 	<h3>Rewards</h3>
 
@@ -38,14 +43,19 @@
 					<p> Backers: <%= reward.pledges.count %> </p>
 					<p> Remaining: <%= reward.qty - reward.pledges.count %> </p>
 				</div>
-			
-				<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#reward-modal-<%= reward.id %>">Back this project!</button>
+				
+				<% if current_user %>
+					<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#reward-modal-<%= reward.id %>">Back this project!</button>
+				<% else %>
+					<%= link_to "Log In to Back", login_path, class: "btn btn-primary btn-block" %>
+				<% end %>
 
 			</div>
-			
-			<div id="reward-modal-<%= reward.id %>" class="reward-modal modal fade" tabindex="-1" role="dialog" aria-abelliedby="rewardModalLabel" aria-hidden="true">
-			 	<%= render partial: 'pledges/pledges_fields', locals: { project: @project, reward: reward, pledge: reward.pledges.new }%>
-		 	</div>
+			<% if current_user %>
+				<div id="reward-modal-<%= reward.id %>" class="reward-modal modal fade" tabindex="-1" role="dialog" aria-abelliedby="rewardModalLabel" aria-hidden="true">
+				 	<%= render partial: 'pledges/pledges_fields', locals: { project: @project, reward: reward, pledge: reward.pledges.new }%>
+			 	</div>
+		 	<% end %>
 	 
 	 	</div>
 	<% end %>
