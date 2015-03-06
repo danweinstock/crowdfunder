@@ -4,7 +4,14 @@
 <h2><%= @user.first_name %> <%= @user.last_name %>'s Profile</h2>
 </div>
 
-<%= render partial: "pledge" %> 
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active backed-projects"><a href="#">Backed Projects</a></li>
+  <li role="presentation" class="owned-projects"><a href="#">Owned Projects</a></li>
+</ul>
+
+<div id="projects-container">
+	<%= render partial: "pledge" %> 
+</div>
 
 
 
