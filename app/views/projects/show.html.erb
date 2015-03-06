@@ -1,41 +1,13 @@
-
-<div class="page-header">
+<div class="jumbotron">
 	<h1><%= @project.title %> <small>by: <%= "#{@project.owner.first_name} #{@project.owner.last_name}"%> </small></h1>
 </div>
-<div class="jumbotron">
-	<p> Days to go: <%= ((@project.end_date - Time.zone.now).to_i)/1.day + 1 %> </p>
-	<p> End Date: <%= @project.end_date.strftime("%B %d, %Y") %> </p>
-	<p> Backers: <%= @project.pledges.count %> </p>			
-	<p> Pledged: <%= number_to_currency(@pledged) %> </p>
-	<p> Goal: <%= number_to_currency(@goal) %> </p>
-	<div class="progress">
-		<div class="progress-bar" role="progressbar" aria-valuenow="<%= @progress %>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @progress %>%">
-			<%= number_to_percentage @progress, precision: 0 %>
-		</div>
-	</div>
-	<p> Description: <%= @project.description %> </p>			
-	<p> Project started: <%= @project.start_date.strftime("%B %d, %Y") %></p>
+	
+<div class="project-info">
+	<%= render partial: 'project_info' %>
 </div>
 
-	<h3>Rewards</h3>
-		<% @project.rewards.each do |reward| %>
-		<div class="reward-container col-md-6">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h5 class="panel-title"> Pledge <%= number_to_currency(reward.price) %> or more </h5>
-				</div>
-				<div class="panel-body">
-					<p> Description: <%= reward.description %> </p>
-					<p>	Quantity: <%= reward.qty %> </p>
-					<p> Backers: <%= reward.pledges.count %> </p>
-					<p> Remaining: <%= reward.qty - reward.pledges.count %> </p>
-				</div>
-				
-			<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#reward-modal-<%= reward.id %>">Back this project!</button>
-			
-			</div>
-			<div id="reward-modal-<%= reward.id %>"class="reward-modal modal fade" tabindex="-1" role="dialog" aria-abelliedby="rewardModalLabel" aria-hidden="true">
-			 	<%= render partial: 'pledges/pledges_fields', locals: {project: @project, reward: reward, pledge: reward.pledges.new }%>
-		 	</div>
-	 	</div>
-	<% end %>
+<h3>Rewards</h3>
+
+<div class="reward-info">
+	<%= render @project.rewards %>
+</div>

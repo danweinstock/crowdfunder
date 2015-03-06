@@ -1,2 +1,6 @@
-alert("You backed this project!");
-console.log('you clicked on this');
+$('.project-info').html("<%= j(render partial: 'projects/project_info') %>");
+
+$('.reward-info').html("<%= j(render @project.rewards) %>");
+
+$('#reward-modal-<%= @pledge.reward.id %>').modal('hide');
+$('body').removeClass('modal-open');

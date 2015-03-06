@@ -1,13 +1,16 @@
 class PledgesController < ApplicationController
 	def new
-
 	end
 
 	def create
 		@pledge = Pledge.new(pledge_params)
 
 		respond_to do |format|
-			if @pledge.save 
+			if @pledge.save
+				@project = Project.find(params[:project_id])
+				@pledged = @project.pledges.pluck(:amount).sum
+				@goal = @project.goal
+				@progress = @pledged.to_f / @goal.to_f * 100
 				format.html { redirect_to project_path(@pledge.reward.project) }
 				format.js {}
 			else
@@ -16,16 +19,6 @@ class PledgesController < ApplicationController
 			end
 		end
 	end
-
-	# respond_to do |format|
-	#       if @review.save
-	#         format.html { redirect_to product_path(@product.id), notice: 'Review added.' }
-	#         format.js {} # This will look for app/views/reviews/create.js.erb
-	#       else
-	#         format.html { render 'products/show', alert: 'There was an error.'  }
-	#         format.js {} # This will look for app/views/reviews/create.js.erb
-	#       end
-	#     end    
 
 	private
 	def pledge_params
