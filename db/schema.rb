@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 20150306194532) do
   create_table "pledges", force: :cascade do |t|
     t.integer  "amount"
     t.integer  "reward_id"
+    t.integer  "backer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "backer_id"
   end
 
   create_table "projects", force: :cascade do |t|

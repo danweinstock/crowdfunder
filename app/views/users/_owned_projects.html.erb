@@ -1,0 +1,15 @@
+<div class= "container">
+	<dl>
+		<h2>Owned Projects</h2>
+		<p>Total Owned Projects: <%=current_user.projects.count %> </p>
+		<% @owned_projects.each do |project| %>
+			<div class="well well-sm">
+				<dt class="h3"> <%= link_to project.title, project_path(project.id)%> </dt>
+					<dd>Description: <%= project.description %>></dd>
+					<dd>Days to go: <%= ((project.end_date - Time.zone.now).to_i)/1.day + 1 %> </dd>
+					<dd>End Date: <%= project.end_date.strftime("%B %d, %Y") %> </dd>
+					<dd>Pledged: <%= number_to_currency(project.pledges.pluck(:amount).sum) %> of <%= number_to_currency(project.goal) %> </dd>
+			</div>
+		<% end %>
+	</dl>
+</div>

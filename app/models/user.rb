@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
   validates :email, uniqueness: true
   
-  has_many :projects, foreign_key: "owner_id" 
+  has_many :projects, foreign_key: "owner_id"
   has_many :pledges, foreign_key: "backer_id"
   has_many :rewards, through: :pledges 
 

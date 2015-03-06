@@ -1,14 +1,17 @@
 <div class= "container">
 	<dl>
-		<% @user.pledges.each do |pledge| %>
-	<div class="well well-sm">
-			<dt class="h3"> Project title:
-				<%= link_to pledge.reward.project.title, project_path(pledge.reward.project)%>
-			</dt>
-				<dd>Pledge amount:	<%= pledge.amount %></dd>
-				<dd>Reward Description: <%= pledge.reward.description%></dd>
+		<h2>Backed Projects</h2>
+		<p>Total Projects Backed: <%= current_user.pledges.count %> </p>
+		<p>Total Amount Pledged: <%= number_to_currency(current_user.pledges.pluck(:amount).sum) %> </p>
 
-	</div>
+		<% current_user.pledges.each do |pledge| %>
+			<div class="well well-sm">
+				<dt class="h3"><%= link_to pledge.reward.project.title, project_path(pledge.reward.project)%></dt>
+					<dd>Pledge amount:	<%= number_to_currency(pledge.amount) %></dd>
+					<dd>Reward Description: <%= pledge.reward.description%></dd>
+			</div>
 		<% end %>
 	</dl>
 </div>
+
+

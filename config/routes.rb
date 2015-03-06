@@ -9,6 +9,11 @@ Rails.application.routes.draw do
 
   resources :users, except: [:index] do 
     resources :password_resets, only: [:create, :edit, :update]
+    collection do
+      get 'backed' 
+      get 'owned'
+    end
+
   end
   
   resources :user_sessions, only: [:new, :create, :destroy]
