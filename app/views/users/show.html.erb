@@ -1,10 +1,16 @@
 <div class = "container">
-
-
-<h2><%= @user.first_name %> <%= @user.last_name %>'s Profile</h2>
+	<h2><%= @user.first_name %> <%= @user.last_name %>'s Profile</h2>
 </div>
 
-<%= render partial: "pledge" %> 
+<ul class="nav nav-tabs">
+  <li role="presentation" class="active backed-projects"><a>Backed Projects</a></li>
+  <li role="presentation" class="owned-projects"><a>Owned Projects</a></li>
+</ul>
 
+<div>
+	<%= image_tag @user.avatar_url(:medium) %>
+</div>
 
-
+<div id="projects-container">
+	<%= render partial: "pledge" %> 
+</div>

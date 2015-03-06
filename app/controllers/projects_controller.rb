@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 	
 	def index
-		@projects = Project.order('projects.created_at DESC').page(params[:page])
+		@projects = Project.active.order('projects.created_at DESC').page(params[:page])
 	end
 
 	def new
@@ -50,5 +50,4 @@ class ProjectsController < ApplicationController
 			]
 		)
 	end
-
 end

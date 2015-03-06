@@ -5,4 +5,7 @@ class Project < ActiveRecord::Base
 	accepts_nested_attributes_for :rewards, :reject_if => :all_blank, :allow_destroy => true
 	accepts_nested_attributes_for :pledges, :reject_if => :all_blank, :allow_destroy => true
 
+	scope :active, -> {where('end_date > ?', Time.zone.now)}
+
+	
 end
