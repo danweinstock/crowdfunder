@@ -36,7 +36,7 @@ gem 'cancancan', '~> 1.10'
 gem 'bootstrap-sass', '~> 3.3.3'
 
 gem 'carrierwave'
-gem 'mini_magick'
+gem 'mini_magick', '~> 4.1.0'
 
 
 # Use ActiveModel has_secure_password
