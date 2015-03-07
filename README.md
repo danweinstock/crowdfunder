@@ -4,6 +4,8 @@ This is a group project for creating a crowd funding application.
 
 * Ruby Version 2.2.0
 * Uses Postgres DB
+* Uses imagemagick 
+    - `brew install imagemagick`
 
 # Current Features
 
