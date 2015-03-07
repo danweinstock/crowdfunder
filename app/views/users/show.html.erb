@@ -1,16 +1,22 @@
-<div class = "container">
+<div class = "page-header">
 	<h2><%= @user.first_name %> <%= @user.last_name %>'s Profile</h2>
 </div>
 
-<ul class="nav nav-tabs">
-  <li role="presentation" class="active backed-projects"><a>Backed Projects</a></li>
-  <li role="presentation" class="owned-projects"><a>Owned Projects</a></li>
-</ul>
+<div class="col-md-4">
+	<% if image_tag @user.avatar_url(:medium); binding.pry %>
 
-<div>
-	<%= image_tag @user.avatar_url(:medium) %>
+		<%=  image_tag @user.avatar_url(:medium), class: 'img-circle' %>
+	<% else %>
+	<img src="http://fillmurray.com/300/300" alt="">
+	<% end %>
 </div>
 
-<div id="projects-container">
-	<%= render partial: "pledge" %> 
+<div class="col-md-8">
+	<ul class="nav nav-tabs">
+	  <li role="presentation" class="active backed-projects"><a>Backed Projects</a></li>
+	  <li role="presentation" class="owned-projects"><a>Owned Projects</a></li>
+	</ul>
+	<div id="projects-container">
+		<%= render partial: "pledge" %> 
+	</div>
 </div>
