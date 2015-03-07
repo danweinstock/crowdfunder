@@ -20,13 +20,17 @@ As a Backer, I want to see who the owner of a project is
 
 As a Project Owner, I want to see how many people have funded my project at each reward
 
-# Thursday's Features
-
 As a Backer, I want to be able to back a project at a certain reward
     - should be able to click on a reward and have it submitted with no page refresh
     -  once submitted, upon success, the amount raised should update
-    TO DO: 
-        - Mockup the user flow to determine what we have to code
+
+Add Pictures to Project Page
+    - use picture as background on a jumbotron
+Add user profile picture
+
+As a Backer, I want to see the total amount of money I have spent on projects
+
+# Thursday's Features
 
 As a Project Owner, I want to see how many days are left before my project is done
     TO DO:
@@ -40,14 +44,7 @@ As a Project Owner, I want to see how many days are left before my project is do
                 * the projects %
             + Possibly use tabs and ajax to sort this data
 
-Add Pictures to Project Page
-    - use picture as background on a jumbotron
-Add user profile picture
-
-
 As a Backer, When viewing a project, it should be very clear whether I have backed the project or not
-
-As a Backer, I want to see the total amount of money I have spent on projects
 
 # Friday's Goals
 
